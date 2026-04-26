@@ -198,7 +198,11 @@ const Navbar = () => {
                    </div>
                    
                    {user ? (
-                    <Link to="/farmer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="btn-luxury w-full py-5 text-center text-lg">
+                    <Link 
+                      to={role === 'admin' ? "/admin/dashboard" : "/farmer/dashboard"} 
+                      onClick={() => setIsMobileMenuOpen(false)} 
+                      className="btn-luxury w-full py-5 text-center text-lg"
+                    >
                       {t('Dashboard')}
                     </Link>
                   ) : (

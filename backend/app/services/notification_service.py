@@ -63,65 +63,66 @@ async def send_order_notification_with_retry(order_id_str: str):
                 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap');
                 @media only screen and (max-width: 600px) {{
                     .container {{ width: 100% !important; border-radius: 0 !important; }}
-                    .hero-content {{ padding: 40px 20px !important; }}
-                    .card-wrapper {{ padding: 20px 15px !important; }}
-                    .mobile-stack {{ display: block !important; width: 100% !important; }}
-                    .mobile-center {{ text-align: center !important; }}
+                    .card-wrapper {{ padding: 30px 20px !important; }}
                 }}
             </style>
         </head>
         <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: 'Outfit', Arial, sans-serif;">
-            <div class="container" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 24px; overflow: hidden;">
+            <div class="container" style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
                 
-                <div style="background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); padding: 60px 40px; text-align: center;">
+                <!-- Premium Header -->
+                <div style="background-color: #1B4332; padding: 60px 40px; text-align: center;">
                     <div style="margin-bottom: 24px;">
-                        <span style="background: rgba(255,255,255,0.1); color: #D8F3DC; padding: 8px 16px; border-radius: 30px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;">
-                            Order Confirmed
+                        <span style="background: rgba(255,255,255,0.1); color: #ffffff; padding: 10px 20px; border-radius: 30px; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.15);">
+                            Operational Alert
                         </span>
                     </div>
-                    <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 800; line-height: 1.2;">
-                        Your Poultry Victory <br/><span style="color: #95D5B2;">Starts Today.</span>
+                    <h1 style="margin: 0; color: #ffffff; font-size: 36px; font-weight: 800; line-height: 1.1;">
+                        Order <br/><span style="color: #95D5B2;">Confirmed.</span>
                     </h1>
                 </div>
 
                 <div class="card-wrapper" style="padding: 40px;">
-                    <table style="width: 100%; margin-bottom: 32px; background: #F7F9F9; border-radius: 16px; border: 1px solid #EDF2F2; padding: 16px;">
+                    <!-- Order ID Badge -->
+                    <table style="width: 100%; background: #F8FAFC; border-radius: 20px; padding: 24px; margin-bottom: 32px; border: 1px solid #EDF2F2;">
                         <tr>
                             <td>
-                                <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Order ID</div>
-                                <div style="font-size: 16px; color: #1B4332; font-weight: 800;">{order.get("order_id", "Unknown")}</div>
-                            </td>
-                            <td style="text-align: right;">
-                                <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Status</div>
-                                <div style="font-size: 14px; color: #059669; font-weight: 700;">PROCESSED</div>
+                                <div style="font-size: 10px; color: #94A3B8; text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 6px;">Order Identifier</div>
+                                <div style="font-size: 18px; color: #1B4332; font-weight: 800; font-family: monospace;">{order.get("order_id", "Unknown")}</div>
                             </td>
                         </tr>
                     </table>
 
+                    <!-- Details Table -->
                     <div style="margin-bottom: 32px;">
-                        <h3 style="font-size: 14px; color: #1E293B; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; border-left: 4px solid #1B4332; padding-left: 12px;">Delivery Coordinates</h3>
-                        <table style="width: 100%; background: #ffffff; border: 1px solid #E2E8F0; border-radius: 20px; padding: 20px;">
+                        <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 20px; border-left: 4px solid #1B4332; padding-left: 12px;">Shipment Intelligence</div>
+                        <table style="width: 100%; background: #ffffff; border: 1px solid #E2E8F0; border-radius: 24px; padding: 30px; border-spacing: 0;">
                             <tr>
-                                <td style="padding: 8px 0; color: #64748B;">Recipient</td>
-                                <td style="padding: 8px 0; color: #0F172A; font-weight: 700; text-align: right;">{order.get("customer_name")}</td>
+                                <td style="padding: 12px 0; color: #64748B; font-size: 14px;">Farmer Name</td>
+                                <td style="padding: 12px 0; color: #0F172A; font-weight: 700; text-align: right; font-size: 15px;">{order.get("customer_name")}</td>
                             </tr>
                             <tr>
-                                <td style="padding: 8px 0; color: #64748B;">Contact</td>
-                                <td style="padding: 8px 0; color: #0F172A; font-weight: 700; text-align: right;">{order.get("phone")}</td>
+                                <td style="padding: 12px 0; color: #64748B; font-size: 14px;">Phone Number</td>
+                                <td style="padding: 12px 0; color: #1B4332; font-weight: 700; text-align: right; font-size: 15px;">{order.get("phone")}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 0; color: #64748B; font-size: 14px; vertical-align: top;">Village Hub</td>
+                                <td style="padding: 12px 0; color: #0F172A; font-weight: 500; text-align: right; font-size: 14px; line-height: 1.5;">{order.get("address")}</td>
                             </tr>
                         </table>
                     </div>
 
                     <div style="text-align: center; margin-top: 40px;">
-                        <a href="https://nutimetry.vercel.app/tracker" style="display: block; background: #1B4332; color: #ffffff; padding: 20px; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 16px;">
-                            Track Your Order
+                        <a href="https://nutimetry.vercel.app/track-order" style="display: block; background: #1B4332; color: #ffffff; padding: 22px; border-radius: 18px; text-decoration: none; font-weight: 800; font-size: 16px; letter-spacing: 1px; box-shadow: 0 10px 20px rgba(27, 67, 50, 0.2);">
+                            Track Fulfillment Live
                         </a>
                     </div>
                 </div>
 
-                <div style="background-color: #F8FAFC; padding: 40px; text-align: center; border-top: 1px solid #F1F5F9;">
+                <div style="background-color: #F8FAFC; padding: 50px 40px; text-align: center; border-top: 1px solid #F1F5F9;">
                     <div style="font-size: 20px; font-weight: 800; color: #1B4332;">NutimetryOrganics</div>
-                    <div style="color: #94A3B8; font-size: 11px; margin-top: 20px;">© 2026 NUTIMETRY ORGANICS PRIVATE LIMITED</div>
+                    <div style="color: #94A3B8; font-size: 12px; margin-top: 10px; font-weight: 600;">PREMIUM ALGAE SOLUTIONS</div>
+                    <div style="color: #CBD5E1; font-size: 10px; margin-top: 30px; letter-spacing: 1px;">© 2026 NUTIMETRY ORGANICS PRIVATE LIMITED</div>
                 </div>
             </div>
         </body>
@@ -196,16 +197,17 @@ async def send_enquiry_notification_with_retry(enquiry_id_str: str):
                 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap');
                 @media only screen and (max-width: 600px) {{
                     .container {{ width: 100% !important; border-radius: 0 !important; }}
-                    .card-wrapper {{ padding: 20px 15px !important; }}
+                    .card-wrapper {{ padding: 30px 20px !important; }}
                 }}
             </style>
         </head>
         <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: 'Outfit', Arial, sans-serif;">
-            <div class="container" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 24px; overflow: hidden;">
+            <div class="container" style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
                 
-                <div style="background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); padding: 60px 40px; text-align: center;">
+                <!-- Premium Header (Match Reference Screenshot) -->
+                <div style="background-color: #1B4332; padding: 60px 40px; text-align: center;">
                     <div style="margin-bottom: 24px;">
-                        <span style="background: rgba(255,255,255,0.1); color: #D8F3DC; padding: 8px 16px; border-radius: 30px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;">
+                        <span style="background: rgba(45,106,79,0.6); color: #ffffff; padding: 10px 22px; border-radius: 30px; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
                             Inbound Intelligence
                         </span>
                     </div>
@@ -215,37 +217,42 @@ async def send_enquiry_notification_with_retry(enquiry_id_str: str):
                 </div>
 
                 <div class="card-wrapper" style="padding: 40px;">
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 20px; padding: 24px; margin-bottom: 32px;">
-                        <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; margin-bottom: 16px;">Lead Metadata</div>
-                        <table style="width: 100%;">
+                    <!-- Metadata Card -->
+                    <div style="background: #ffffff; border: 1px solid #F1F5F9; border-radius: 24px; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+                        <div style="font-size: 10px; color: #94A3B8; text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 24px;">Lead Metadata</div>
+                        <table style="width: 100%; border-spacing: 0;">
                             <tr>
-                                <td style="padding: 8px 0; color: #64748B;">Name</td>
-                                <td style="padding: 8px 0; color: #0F172A; font-weight: 700; text-align: right;">{enquiry.get("name")}</td>
+                                <td style="padding: 12px 0; color: #64748B; font-size: 15px;">Name</td>
+                                <td style="padding: 12px 0; color: #0F172A; font-weight: 700; text-align: right; font-size: 15px;">{enquiry.get("name")}</td>
                             </tr>
                             <tr>
-                                <td style="padding: 8px 0; color: #64748B;">Phone</td>
-                                <td style="padding: 8px 0; color: #1B4332; font-weight: 700; text-align: right;">{enquiry.get("phone")}</td>
+                                <td style="padding: 12px 0; color: #64748B; font-size: 15px;">Phone</td>
+                                <td style="padding: 12px 0; color: #1B4332; font-weight: 700; text-align: right; font-size: 15px;">{enquiry.get("phone")}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 0; color: #64748B; font-size: 15px;">Timestamp</td>
+                                <td style="padding: 12px 0; color: #64748B; font-weight: 500; text-align: right; font-size: 13px;">{created_at_fmt}</td>
                             </tr>
                         </table>
                     </div>
 
-                    <div style="margin-bottom: 32px;">
-                        <h3 style="font-size: 14px; color: #1E293B; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; border-left: 4px solid #1B4332; padding-left: 12px;">Query Details</h3>
-                        <div style="background: #ffffff; border: 1px solid #E2E8F0; padding: 25px; border-radius: 20px; color: #334155; font-size: 16px; line-height: 1.6;">
+                    <div style="margin-top: 40px; margin-bottom: 40px;">
+                        <div style="font-size: 10px; color: #94A3B8; text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 15px; border-left: 4px solid #1B4332; padding-left: 12px;">Query Details</div>
+                        <div style="background: #F8FAFC; border: 1px solid #EDF2F2; padding: 25px; border-radius: 20px; color: #334155; font-size: 16px; line-height: 1.6; font-weight: 400;">
                             {enquiry.get("message")}
                         </div>
                     </div>
 
-                    <div style="text-align: center; margin-top: 40px;">
-                        <a href="tel:{enquiry.get('phone')}" style="display: block; background: #1B4332; color: #ffffff; padding: 20px; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 16px;">
-                            Call Farmer Now
+                    <div style="text-align: center;">
+                        <a href="tel:{enquiry.get('phone')}" style="display: block; background: #1B4332; color: #ffffff; padding: 20px; border-radius: 16px; text-decoration: none; font-weight: 800; font-size: 16px; letter-spacing: 0.5px;">
+                            Call Farmer Directly
                         </a>
                     </div>
                 </div>
 
-                <div style="background-color: #F8FAFC; padding: 40px; text-align: center; border-top: 1px solid #F1F5F9;">
+                <div style="background-color: #F8FAFC; padding: 50px 40px; text-align: center; border-top: 1px solid #F1F5F9;">
                     <div style="font-size: 20px; font-weight: 800; color: #1B4332;">NutimetryOrganics</div>
-                    <div style="color: #94A3B8; font-size: 11px; margin-top: 20px;">© 2026 NUTIMETRY ORGANICS PRIVATE LIMITED</div>
+                    <div style="color: #94A3B8; font-size: 11px; margin-top: 20px; font-weight: 700; letter-spacing: 1px;">© 2026 NUTIMETRY ORGANICS PRIVATE LIMITED</div>
                 </div>
             </div>
         </body>

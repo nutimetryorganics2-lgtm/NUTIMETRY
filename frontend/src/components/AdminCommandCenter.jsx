@@ -275,14 +275,19 @@ const AdminCommandCenter = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex overflow-hidden">
-      {/* Sidebar */}
-      {/* Mobile Toggle Button */}
-      <button 
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="lg:hidden fixed bottom-8 right-8 z-[110] w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-all"
-      >
-        {isMobileMenuOpen ? <X size={24} /> : <Activity size={24} />}
-      </button>
+      {/* Mobile Header Bar */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md z-[90] border-b border-slate-100 flex items-center justify-between px-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary/20">N</div>
+          <span className="font-serif font-black text-lg text-primary tracking-tight">Command Center</span>
+        </div>
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="w-12 h-12 bg-slate-50 text-primary rounded-full flex items-center justify-center border border-slate-100 active:scale-95 transition-all shadow-sm"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
 
       {/* Sidebar Overlay for Mobile */}
       <AnimatePresence>
@@ -336,8 +341,8 @@ const AdminCommandCenter = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto relative no-scrollbar bg-[#F8FAFC]">
-        <div className="max-w-[1400px] mx-auto p-8 lg:p-12 box-border min-h-full">
+      <main className="flex-1 overflow-y-auto relative no-scrollbar bg-[#F8FAFC] pt-20 lg:pt-0">
+        <div className="max-w-[1400px] mx-auto p-6 lg:p-12 box-border min-h-full">
           <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={activeTab}
