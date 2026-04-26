@@ -35,6 +35,7 @@ const AdminCommandCenter = () => {
   const { logout } = useAuthStore();
   
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [globalFilter, setGlobalFilter] = useState('');
   const [loading, setLoading] = useState(true);
   
@@ -275,35 +276,62 @@ const AdminCommandCenter = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-20 lg:w-72 bg-primary text-white flex flex-col p-8 transition-all shrink-0 glass-dark border-r border-white/5">
+      {/* Mobile Toggle Button */}
+      <button 
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="lg:hidden fixed bottom-8 right-8 z-[110] w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-all"
+      >
+        {isMobileMenuOpen ? <X size={24} /> : <Activity size={24} />}
+      </button>
+
+      {/* Sidebar Overlay for Mobile */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="lg:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100]"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Sidebar */}
+      <aside className={`
+        fixed lg:static inset-y-0 left-0 z-[105] 
+        w-72 bg-primary text-white flex flex-col p-8 
+        transition-all duration-500 glass-dark border-r border-white/5
+        ${isMobileMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0'}
+      `}>
         <div className="flex items-center gap-5 mb-16 px-2">
           <div className="w-12 h-12 bg-accent rounded-2xl flex items-center justify-center text-white font-black shadow-2xl shadow-accent/20 text-2xl animate-float">N</div>
-          <div className="hidden lg:block">
+          <div>
             <span className="block font-serif font-black text-xl tracking-tight leading-none">Nutimetry</span>
             <span className="text-[10px] font-black text-accent uppercase tracking-widest">Command Center</span>
           </div>
         </div>
         
         <nav className="flex-1 space-y-3">
-          <button onClick={() => handleTabChange('overview', -1)} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'overview' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
-             <Activity size={22} className={activeTab === 'overview' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span className="hidden lg:block">Overview</span>
+          <button onClick={() => { handleTabChange('overview', -1); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'overview' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
+             <Activity size={22} className={activeTab === 'overview' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span>Overview</span>
           </button>
-          <button onClick={() => handleTabChange('inventory', activeTab === 'overview' ? 1 : -1)} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'inventory' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
-             <Package size={22} className={activeTab === 'inventory' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span className="hidden lg:block">Inventory</span>
+          <button onClick={() => { handleTabChange('inventory', activeTab === 'overview' ? 1 : -1); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'inventory' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
+             <Package size={22} className={activeTab === 'inventory' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span>Inventory</span>
           </button>
-          <button onClick={() => handleTabChange('network', 1)} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'network' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
-             <Users size={22} className={activeTab === 'network' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span className="hidden lg:block">Broiler Network</span>
+          <button onClick={() => { handleTabChange('network', 1); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'network' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
+             <Users size={22} className={activeTab === 'network' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span>Broiler Network</span>
           </button>
-          <button onClick={() => handleTabChange('settings', 1)} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'settings' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
-             <Settings size={22} className={activeTab === 'settings' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span className="hidden lg:block">System Config</span>
+          <button onClick={() => { handleTabChange('settings', 1); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-4 p-5 rounded-[1.5rem] transition-all group ${activeTab === 'settings' ? 'bg-white text-primary font-black shadow-2xl shadow-white/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}>
+             <Settings size={22} className={activeTab === 'settings' ? 'text-accent' : 'group-hover:scale-110 transition-transform'} /> <span>System Config</span>
           </button>
         </nav>
 
         <Link to="/" className="flex items-center gap-4 p-4 text-white/40 hover:text-white transition-colors font-bold text-xs uppercase tracking-widest">
-          <ArrowLeft size={20} /> <span className="hidden lg:block">Back to Portal</span>
+          <ArrowLeft size={20} /> <span>Back to Portal</span>
         </Link>
         <button onClick={logout} className="flex items-center gap-4 p-4 text-white/40 hover:text-red-400 transition-colors font-bold text-xs uppercase tracking-widest">
-          <LogOut size={20} /> <span className="hidden lg:block">Logout Session</span>
+          <LogOut size={20} /> <span>Logout Session</span>
         </button>
       </aside>
 

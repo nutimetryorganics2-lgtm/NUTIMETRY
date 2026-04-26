@@ -34,7 +34,7 @@ const resources = {
       "Natural Growth": "Natural Growth",
 
       // Benefits
-      "Why broiler farmers switch": "Why Broiler Farmers Switch",
+      "Why broiler farmers switch": "Why Broiler Farmers Switch?",
       "Six ways spirulina changes your shed economics": "Six ways spirulina optimizes your shed economics.",
       "BenefitSubtitle": "Strategic nutrition engineered for the modern poultry professional.",
       "Benefit1Title": "Improved Weight Gain",
