@@ -150,6 +150,8 @@ app.add_middleware(
     allow_origins=[
         settings.FRONTEND_URL, 
         settings.STAGING_URL, 
+        "https://nutimetry.vercel.app",
+        "https://www.nutimetry.vercel.app",
         "http://localhost:5173", 
         "http://localhost:5174",
         "http://127.0.0.1:5173",
