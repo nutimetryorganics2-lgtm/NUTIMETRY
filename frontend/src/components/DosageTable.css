@@ -1,0 +1,49 @@
+.dosage-container {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.dosage-image img {
+  width: 100%;
+  border-radius: 24px;
+}
+
+.dosage-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.dosage-table th {
+  text-align: left;
+  padding: 15px;
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.dosage-table td {
+  padding: 20px 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 15px;
+}
+
+.inclusion-badge {
+  background: rgba(27, 67, 50, 0.05);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  .dosage-container {
+    grid-template-columns: 1fr;
+  }
+  .dosage-table th { display: none; }
+  .dosage-table tr { display: block; margin-bottom: 20px; border: 1px solid #eee; border-radius: 12px; padding: 10px; }
+  .dosage-table td { display: block; padding: 10px; border: none; }
+}

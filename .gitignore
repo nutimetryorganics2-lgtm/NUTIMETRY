@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+backend/venv/
+backend/__pycache__/
+frontend/node_modules/
+frontend/dist/
+
+# Environment Variables (SENSITIVE)
+.env
+backend/.env
+frontend/.env
+*.env.local
+
+# Logs
+*.log
+backend/app.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Testing
+backend/htmlcov/
+backend/.tox/
+backend/.coverage
+backend/.cache/
+backend/.pytest_cache/

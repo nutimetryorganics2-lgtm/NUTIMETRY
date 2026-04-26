@@ -1,0 +1,51 @@
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+.research-card {
+  padding: 30px;
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 20px;
+  transition: var(--transition);
+}
+
+.research-card:hover {
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.research-card h3 {
+  font-size: 18px;
+  margin: 0;
+  max-width: 80%;
+}
+
+.year-badge {
+  background: #f0f0f0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.research-card p {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 576px) {
+  .research-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: nutimetryorganic-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: ENVIRONMENT
+        value: production
+      - key: FRONTEND_URL
+        value: https://nutimetryorganic.vercel.app
+      - key: STAGING_URL
+        value: https://staging-nutimetryorganic.vercel.app
+      - key: MONGODB_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SENTRY_DSN
+        sync: false

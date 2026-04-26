@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1B4332;
+  --color-accent: #2D6A4F;
+  --color-accent-soft: #40916C;
+  --color-bg-luxury: #FCFBF7;
+  --color-text-luxury: #081C15;
+  --color-text-secondary: #52796F;
+  
+  --font-inter: "Inter", "Noto Sans Telugu", sans-serif;
+  --font-telugu: "Noto Sans Telugu", sans-serif;
+}
+
+@layer base {
+  :root {
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    --premium-border: 1px solid #f1f5f9;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-inter);
+    background-color: var(--color-bg-luxury);
+    color: var(--color-text-luxury);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  html[lang="te"] {
+    font-family: var(--font-telugu);
+    line-height: 1.85;
+    letter-spacing: 0.3px;
+  }
+  
+  html[lang="te"] h1 {
+    @apply text-[1.25rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[2.4] py-12;
+    display: block;
+    overflow: visible;
+  }
+
+  body {
+    @apply bg-[#f8fafc] text-[#020617];
+    line-height: 1.7;
+  }
+
+  h1 { 
+    @apply text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-8; 
+    color: var(--color-text-luxury);
+    letter-spacing: -2px;
+  }
+  
+  h2 { 
+    @apply text-[2.5rem] md:text-[3.25rem] font-bold tracking-tight leading-tight mb-8; 
+    color: var(--color-text-luxury);
+    letter-spacing: -1px;
+  }
+
+  h3 {
+    @apply text-[1.5rem] md:text-[1.75rem] font-bold tracking-tight mb-4;
+    color: var(--color-text-luxury);
+  }
+
+  p { 
+    @apply text-[1.125rem] leading-relaxed mb-8; 
+    color: var(--color-text-secondary); 
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  .container-max {
+    @apply mx-auto px-6 sm:px-8 lg:px-12;
+    max-width: 1440px;
+  }
+
+  .section-spacing {
+    @apply py-20 md:py-32;
+  }
+
+  .btn-luxury {
+    @apply inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full font-bold text-white transition-all duration-700 active:scale-[0.98] cursor-pointer shadow-lg shadow-primary/10;
+    background: var(--color-primary);
+  }
+
+  .btn-luxury:hover {
+    @apply -translate-y-1 shadow-2xl;
+    background: var(--color-accent);
+    box-shadow: 0 20px 40px rgba(27, 67, 50, 0.2);
+  }
+
+  .btn-luxury-outline {
+    @apply inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full font-bold bg-transparent border-2 border-primary/10 text-primary transition-all duration-700 active:scale-[0.98] cursor-pointer;
+  }
+
+  .btn-luxury-outline:hover {
+    @apply bg-white -translate-y-1 shadow-xl border-primary/20;
+  }
+
+  .premium-luxury-card {
+    @apply bg-white rounded-[24px] p-10 transition-all duration-1000 border border-slate-100/50 overflow-hidden;
+    box-shadow: 0 20px 60px rgba(8, 28, 21, 0.04);
+  }
+
+  .premium-luxury-card:hover {
+    @apply -translate-y-3;
+    box-shadow: 0 40px 100px rgba(8, 28, 21, 0.08);
+    border-color: var(--color-accent-soft);
+  }
+
+  .luxury-image-muted {
+    @apply opacity-70 transition-all duration-1000 rounded-[20px];
+    filter: brightness(0.9) contrast(1.1);
+  }
+  
+  .luxury-image-muted:hover {
+    @apply opacity-100;
+    filter: brightness(1) contrast(1);
+    transform: scale(1.05);
+  }
+
+  .premium-input-luxury {
+    @apply w-full px-8 py-5 rounded-2xl border border-slate-200 bg-white transition-all duration-500 outline-none font-medium text-slate-900 shadow-sm;
+    &:focus {
+      @apply border-accent ring-8 ring-accent/5;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
+    }
+  }
+
+  .glass-island {
+    @apply bg-white/80 backdrop-blur-3xl border border-white/40 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-700;
+  }
+
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-2xl border-b border-white/40 shadow-sm;
+  }
+
+  .glass-pill {
+    @apply bg-white/90 backdrop-blur-xl border border-white/50 rounded-full shadow-2xl;
+  }
+}
+
+.text-luxury-gradient {
+  @apply bg-clip-text text-transparent overflow-visible;
+  display: inline-block;
+  padding: 0.25em 0;
+  background-image: linear-gradient(135deg, #020617, #1e293b);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+.ambient-light {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.ambient-light-1 { top: -100px; right: -100px; }
+.ambient-light-2 { bottom: -100px; left: -100px; }
