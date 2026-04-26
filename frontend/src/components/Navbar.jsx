@@ -120,14 +120,11 @@ const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-2 shrink-0 ml-4">
-            <div className="hidden xl:flex items-center gap-2 pr-2 border-r border-slate-200">
+            <div className="hidden lg:flex items-center gap-2 pr-2 border-r border-slate-200">
+               <LanguageSwitcher />
                <a href="tel:9121337792" className="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-primary hover:bg-slate-50 rounded-full transition-all duration-500" title="Call Us">
                  <Phone size={18} strokeWidth={2.5} />
                </a>
-               <a href="https://wa.me/9121337792" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-accent hover:bg-accent/5 rounded-full transition-all duration-500" title="Chat with Us">
-                 <MessageSquare size={18} strokeWidth={2.5} />
-               </a>
-               <LanguageSwitcher />
             </div>
 
             <div className="flex items-center gap-2">
@@ -188,20 +185,18 @@ const Navbar = () => {
                 ))}
               </div>
               <div className="pt-8 border-t border-slate-100 flex flex-col gap-6">
-                <div className="inline-flex items-center bg-white/95 backdrop-blur-md px-10 py-6 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.2)] mb-10">
-                  <BrandLogo size="md" className="!h-10" />
-                </div>
-                <LanguageSwitcher />
-                <div className="flex flex-col gap-4">
-                   <a href="tel:9121337792" className="flex items-center gap-4 text-slate-500 font-bold">
-                      <Phone size={20} /> 9121337792
-                   </a>
+                <div className="flex flex-col gap-8">
+                   <div className="space-y-2">
+                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">{t('Select Language')}</p>
+                     <LanguageSwitcher />
+                   </div>
+                   
                    {user ? (
-                    <Link to="/farmer/dashboard" className="btn-luxury w-full py-5 text-center text-lg">
+                    <Link to="/farmer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="btn-luxury w-full py-5 text-center text-lg">
                       {t('Dashboard')}
                     </Link>
                   ) : (
-                    <button onClick={() => navigate('/login')} className="btn-luxury w-full py-5 text-lg">
+                    <button onClick={() => { setIsMobileMenuOpen(false); navigate('/login'); }} className="btn-luxury w-full py-5 text-lg">
                       {t('Sign In')}
                     </button>
                   )}

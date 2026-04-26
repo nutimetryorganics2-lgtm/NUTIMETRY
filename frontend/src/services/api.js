@@ -51,7 +51,7 @@ api.interceptors.response.use(
         message = first.msg ? `${first.loc.join('.')}: ${first.msg}` : "Validation failed";
       }
     } else if (error.request && !error.response) {
-      message = "Connection failure. Please check your internet.";
+      message = "Connection blocked. Ensure your API URL starts with https:// and check your Render CORS settings.";
     }
 
     // implement controlled retry logic (max 2 times) for transient errors (502, 503, 504)
