@@ -169,14 +169,16 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -10, scale: 0.95 }} 
             className="lg:hidden fixed inset-0 z-[60] p-4 flex flex-col"
           >
-            <div className="bg-white rounded-[2.5rem] p-10 shadow-2xl border border-slate-100 flex flex-col gap-8 h-full overflow-y-auto custom-scrollbar relative">
-              {/* Close Button in corner for better UX */}
-              <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center bg-slate-50 rounded-full text-primary hover:bg-slate-100 transition-all">
-                <X size={24} />
-              </button>
-              <div className="inline-flex items-center bg-white/95 backdrop-blur-md px-12 py-8 rounded-full shadow-[0_30px_60px_rgba(0,0,0,0.15)] mb-16">
-                <BrandLogo size="lg" className="!h-14" />
+            <div className="bg-white rounded-[2.5rem] p-6 shadow-2xl border border-slate-100 flex flex-col h-full overflow-y-auto custom-scrollbar relative">
+              {/* Dedicated Mobile Header Bar to prevent overlap */}
+              <div className="flex items-center justify-between mb-10 px-4 pt-4">
+                <BrandLogo size="md" className="!h-8" />
+                <button onClick={() => setIsMobileMenuOpen(false)} className="w-12 h-12 flex items-center justify-center bg-slate-50 rounded-full text-primary hover:bg-slate-100 transition-all border border-slate-100">
+                  <X size={24} />
+                </button>
               </div>
+
+              <div className="flex flex-col gap-8 px-4">
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <button 
