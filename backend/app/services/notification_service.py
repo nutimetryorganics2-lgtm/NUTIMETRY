@@ -70,10 +70,10 @@ async def send_order_notification_with_retry(order_id_str: str):
         <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: 'Outfit', Arial, sans-serif;">
             <div class="container" style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
                 
-                <!-- Premium Header -->
+                <!-- Premium Header (Match Inbound Intelligence) -->
                 <div style="background-color: #1B4332; padding: 60px 40px; text-align: center;">
                     <div style="margin-bottom: 24px;">
-                        <span style="background: rgba(255,255,255,0.1); color: #ffffff; padding: 10px 20px; border-radius: 30px; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.15);">
+                        <span style="background: rgba(45,106,79,0.6); color: #ffffff; padding: 10px 22px; border-radius: 30px; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
                             Operational Alert
                         </span>
                     </div>

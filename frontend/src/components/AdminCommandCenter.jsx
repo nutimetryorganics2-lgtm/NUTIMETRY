@@ -23,7 +23,8 @@ import {
   Lock,
   ArrowLeft,
   LogOut,
-  Search
+  Search,
+  Menu
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore, useDashboardStore } from '../store/useStore';

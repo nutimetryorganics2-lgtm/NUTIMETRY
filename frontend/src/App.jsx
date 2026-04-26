@@ -113,7 +113,17 @@ const App = () => {
                     {['Home', 'Benefits', 'Products', 'Research'].map((item) => (
                       <button 
                         key={item}
-                        onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({behavior:'smooth'})} 
+                        onClick={() => {
+                          const id = item.toLowerCase();
+                          if (location.pathname !== '/') {
+                            navigate('/', { state: { scrollTarget: id } });
+                            setTimeout(() => {
+                              document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                            }, 300);
+                          } else {
+                            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }} 
                         className="text-slate-400 hover:text-white transition-all text-left text-sm font-bold group flex items-center gap-2"
                       >
                         {t(item)} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />

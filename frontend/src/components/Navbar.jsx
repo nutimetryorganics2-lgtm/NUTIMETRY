@@ -183,7 +183,14 @@ const Navbar = () => {
                 {navLinks.map((link) => (
                   <button 
                     key={link.id}
-                    onClick={() => link.type === 'link' ? navigate(`/${link.id}`) : scrollToSection(link.id)}
+                    onClick={() => {
+                      if (link.type === 'link') {
+                        setIsMobileMenuOpen(false);
+                        navigate(`/${link.id}`);
+                      } else {
+                        scrollToSection(link.id);
+                      }
+                    }}
                     className="text-left py-2 font-bold text-primary text-3xl hover:text-accent transition-colors duration-500"
                   >
                     {t(link.name)}
