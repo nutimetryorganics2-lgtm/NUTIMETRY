@@ -201,7 +201,9 @@ const FarmerDashboard = () => {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-[100] glass-panel border-b border-white/20 px-6 py-5 flex justify-between items-center shadow-xl">
         <div className="flex items-center gap-3">
-           <div className="w-11 h-11 bg-primary rounded-2xl flex items-center justify-center text-white font-black shadow-2xl shadow-primary/20 animate-float italic">N</div>
+           <div className="w-11 h-11 bg-white rounded-2xl flex items-center justify-center shadow-2xl overflow-hidden border border-emerald-500/10 animate-float">
+             <img src="/assets/logo_dashboard.jpg" alt="Nutimetry" className="w-full h-full object-cover scale-125" />
+           </div>
            <h1 className="text-xl font-serif font-black text-primary tracking-tight">Farmer Portal</h1>
         </div>
         <div className="flex items-center gap-4">

@@ -279,7 +279,9 @@ const AdminCommandCenter = () => {
       {/* Mobile Header Bar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md z-[90] border-b border-slate-100 flex items-center justify-between px-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary/20">N</div>
+          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden border border-emerald-50">
+            <img src="/assets/logo_dashboard.jpg" alt="Nutimetry" className="w-full h-full object-cover scale-110" />
+          </div>
           <span className="font-serif font-black text-lg text-primary tracking-tight">Command Center</span>
         </div>
         <button 
@@ -311,7 +313,9 @@ const AdminCommandCenter = () => {
         ${isMobileMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0'}
       `}>
         <div className="flex items-center gap-5 mb-16 px-2">
-          <div className="w-12 h-12 bg-accent rounded-2xl flex items-center justify-center text-white font-black shadow-2xl shadow-accent/20 text-2xl animate-float">N</div>
+          <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-2xl overflow-hidden border border-emerald-500/10 animate-float">
+            <img src="/assets/logo_dashboard.jpg" alt="Nutimetry" className="w-full h-full object-cover scale-125" />
+          </div>
           <div>
             <span className="block font-serif font-black text-xl tracking-tight leading-none">Nutimetry</span>
             <span className="text-[10px] font-black text-accent uppercase tracking-widest">Command Center</span>
