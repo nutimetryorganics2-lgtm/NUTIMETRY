@@ -356,37 +356,37 @@ const AdminCommandCenter = () => {
             className="h-full"
           >
             {activeTab === 'overview' && (
-              <div className="space-y-10">
-                <header className="flex flex-col xl:flex-row justify-between items-center gap-8 pb-10 border-b border-slate-100">
-                   <div className="space-y-2 text-center xl:text-left w-full max-w-xl">
-                      <h1 className="text-3xl md:text-[1.75rem] font-serif font-black text-slate-900 tracking-tight leading-tight">System Overview</h1>
-                      <p className="text-sm md:text-base text-[#1B4332] font-medium opacity-60">
-                         స్పిరులినా తో కోళ్ల ఆరోగ్యం మెరుగ్గా.. లాభం మరింతగా!
+              <div className="space-y-8 sm:space-y-10">
+                <header className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-8 pb-10 border-b border-slate-100">
+                   <div className="space-y-2 text-left w-full max-w-xl">
+                      <h1 className="text-2xl md:text-[1.75rem] font-serif font-black text-slate-900 tracking-tight leading-tight">System Overview</h1>
+                      <p className="text-xs md:text-base text-[#1B4332] font-medium opacity-60">
+                         స్పిరులినా తో కోళ్ల ఆరోగ్యం మేరుగ్గా.. లాభం మరింతగా!
                       </p>
                    </div>
                    
-                   <div className="flex items-center gap-6 bg-white/80 backdrop-blur-sm p-3 rounded-[2.5rem] border border-slate-200/50 shadow-sm whitespace-nowrap">
-                      <div className="flex items-center gap-3 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-full text-[9px] font-black uppercase tracking-widest border border-emerald-100">
+                   <div className="flex flex-wrap items-center gap-4 bg-white/80 backdrop-blur-sm p-2 sm:p-3 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-200/50 shadow-sm w-full xl:w-auto">
+                      <div className="flex items-center gap-3 px-3 py-1.5 bg-emerald-50 text-emerald-600 rounded-full text-[8px] sm:text-[9px] font-black uppercase tracking-widest border border-emerald-100">
                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Live
                       </div>
-                      <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none self-center">Sync: {new Date().toLocaleTimeString()}</p>
+                      <p className="text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-widest leading-none self-center">Sync: {new Date().toLocaleTimeString()}</p>
                       <button 
                         onClick={fetchData}
-                        className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md active:scale-95"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-slate-900 text-white rounded-xl sm:rounded-2xl text-[9px] sm:text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md active:scale-95"
                       >
                         <Activity size={14} className={loading ? "animate-spin" : ""} />
-                        Sync Dashboard
+                        <span className="whitespace-nowrap">Sync Dashboard</span>
                       </button>
                    </div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                   <motion.div whileHover={{ y: -5 }} className="bg-white p-8 lg:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 p-8 text-primary opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
-                        <Clock size={80} />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                   <motion.div whileHover={{ y: -5 }} className="bg-white p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 p-6 lg:p-8 text-primary opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
+                        <Clock size={64} className="lg:w-20 lg:h-20" />
                       </div>
                       <div className="relative z-10">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 block">Orders Today</span>
+                        <span className="text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 sm:mb-6 block">Orders Today</span>
                         <div className="flex items-baseline gap-4">
                           <div className="text-4xl lg:text-5xl xl:text-6xl font-black text-primary tracking-tight">
                             {metrics?.orders_today || 0}
@@ -401,27 +401,27 @@ const AdminCommandCenter = () => {
                       </div>
                    </motion.div>
 
-                   <motion.div whileHover={{ y: -5 }} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 p-8 text-amber-500 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
-                        <AlertTriangle size={80} />
+                   <motion.div whileHover={{ y: -5 }} className="bg-white p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 p-6 lg:p-8 text-amber-500 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
+                        <AlertTriangle size={64} className="lg:w-20 lg:h-20" />
                       </div>
                       <div className="relative z-10">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 block">Pending Fulfillment</span>
-                        <div className="text-6xl font-black text-slate-900 tracking-tighter">{metrics?.total_pending || 0}</div>
+                        <span className="text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 sm:mb-6 block">Pending Fulfillment</span>
+                        <div className="text-4xl lg:text-6xl font-black text-slate-900 tracking-tighter">{metrics?.total_pending || 0}</div>
                       </div>
                    </motion.div>
 
-                    <motion.div whileHover={{ y: -5 }} className="bg-white p-8 lg:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 p-8 text-accent opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
-                        <Package size={80} />
+                    <motion.div whileHover={{ y: -5 }} className="bg-white p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 p-6 lg:p-8 text-accent opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
+                        <Package size={64} className="lg:w-20 lg:h-20" />
                       </div>
                       <div className="relative z-10 pr-4">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 block">Gross Revenue</span>
+                        <span className="text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 sm:mb-6 block">Gross Revenue</span>
                         <div className={`font-black text-accent tracking-tighter whitespace-nowrap transition-all duration-500 ${
-                          (metrics?.total_revenue || 0).toLocaleString().length > 12 ? 'text-xl' :
-                          (metrics?.total_revenue || 0).toLocaleString().length > 10 ? 'text-2xl' : 
-                          (metrics?.total_revenue || 0).toLocaleString().length > 8 ? 'text-3xl' : 
-                          'text-4xl lg:text-5xl'
+                          (metrics?.total_revenue || 0).toLocaleString().length > 12 ? 'text-lg sm:text-xl' :
+                          (metrics?.total_revenue || 0).toLocaleString().length > 10 ? 'text-xl sm:text-2xl' : 
+                          (metrics?.total_revenue || 0).toLocaleString().length > 8 ? 'text-2xl sm:text-3xl' : 
+                          'text-3xl sm:text-4xl lg:text-5xl'
                         }`}>
                           ₹{(metrics?.total_revenue || 0).toLocaleString()}
                         </div>
@@ -433,18 +433,18 @@ const AdminCommandCenter = () => {
                    <motion.div 
                      initial={{ opacity: 0, y: 20 }}
                      animate={{ opacity: 1, y: 0 }}
-                     className="bg-rose-50 border border-rose-100 p-10 rounded-[3rem] relative overflow-hidden"
+                     className="bg-rose-50 border border-rose-100 p-8 lg:p-10 rounded-[2.5rem] lg:rounded-[3rem] relative overflow-hidden"
                    >
                       <div className="absolute top-0 right-0 p-10 text-rose-200 opacity-20"><AlertTriangle size={120} /></div>
-                      <h3 className="text-rose-900 text-xl font-black flex items-center gap-4 mb-8 relative z-10">
-                        <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                           <AlertTriangle size={24} className="text-rose-500" />
+                      <h3 className="text-rose-900 text-lg lg:text-xl font-black flex items-center gap-4 mb-8 relative z-10">
+                        <div className="w-10 lg:w-12 h-10 lg:h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
+                           <AlertTriangle size={20} className="text-rose-500" />
                         </div>
                         Critical Inventory Alerts
                       </h3>
                       <div className="flex flex-wrap gap-4 relative z-10">
                         {(metrics?.low_stock_alerts || []).map(item => (
-                          <div key={item.id} className="bg-white px-6 py-4 rounded-2xl text-sm font-black text-rose-600 border border-rose-100 shadow-sm flex items-center gap-3">
+                          <div key={item.id} className="bg-white px-5 py-3 lg:px-6 lg:py-4 rounded-2xl text-xs lg:text-sm font-black text-rose-600 border border-rose-100 shadow-sm flex items-center gap-3">
                              <div className="w-2 h-2 bg-rose-500 rounded-full animate-ping" />
                              {item.name}: <span className="text-rose-400 font-bold ml-1">{item.stock} Units Remaining</span>
                           </div>
@@ -456,13 +456,13 @@ const AdminCommandCenter = () => {
             )}
 
             {activeTab === 'inventory' && (
-              <div className="space-y-8">
-                <header className="flex justify-between items-center">
-                   <div>
-                      <h1 className="text-4xl font-serif font-bold text-slate-900">Product Master</h1>
-                      <p className="text-slate-500 mt-1">Manage spirulina catalog and price tiers.</p>
+              <div className="space-y-8 sm:space-y-10">
+                <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                   <div className="w-full sm:w-auto">
+                      <h1 className="text-2xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight">Product Master</h1>
+                      <p className="text-xs md:text-base text-slate-500 mt-1">Manage spirulina catalog and price tiers.</p>
                    </div>
-                    <div className="flex gap-4">
+                    <div className="flex gap-3 w-full sm:w-auto">
                      <button 
                        onClick={async () => {
                         try {
@@ -480,22 +480,22 @@ const AdminCommandCenter = () => {
                           toast.error("Export failed. Please try again.", { id: 'export-toast' });
                         }
                        }} 
-                       className="bg-white border border-slate-200 text-slate-600 px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-50 transition-all shadow-sm"
+                       className="flex-1 sm:flex-none bg-white border border-slate-200 text-slate-600 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-slate-50 transition-all shadow-sm"
                      >
-                        <Package size={20} /> Export CSV
+                        <Package size={16} /> <span className="whitespace-nowrap">Export CSV</span>
                      </button>
-                     <button onClick={() => setIsDrawerOpen(true)} className="bg-primary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
-                        <Plus size={20} /> New Product
+                     <button onClick={() => setIsDrawerOpen(true)} className="flex-1 sm:flex-none bg-primary text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                        <Plus size={16} /> <span className="whitespace-nowrap">New Product</span>
                      </button>
                    </div>
                 </header>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                    {Array.isArray(products) && products.length > 0 ? products.map(p => (
                      <motion.div 
                        key={p._id || p.id} 
                        whileHover={{ y: -5 }}
-                       className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm group hover:shadow-premium transition-all duration-500 relative"
+                       className="bg-white p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-100 shadow-sm group hover:shadow-premium transition-all duration-500 relative"
                      >
                         <div className="w-full aspect-square bg-slate-50 rounded-[2rem] mb-6 flex items-center justify-center text-slate-300 overflow-hidden relative shadow-inner">
                            {p.image_url ? (
@@ -515,7 +515,7 @@ const AdminCommandCenter = () => {
                         <h3 className="font-bold text-xl text-slate-900 group-hover:text-primary transition-colors duration-500 tracking-tight leading-tight mb-2">{p.name}</h3>
                         <p className="text-slate-400 text-xs font-bold leading-relaxed line-clamp-2 mb-8">{p.description}</p>
                         <div className="flex justify-between items-end min-h-[80px]">
-                           <span className="font-serif font-black text-3xl text-primary tracking-tighter">₹{p.price.toLocaleString()}</span>
+                           <span className="font-serif font-black text-2xl lg:text-3xl text-primary tracking-tighter">₹{p.price.toLocaleString()}</span>
                             <div className="flex flex-col items-end gap-2">
                               {deletingId === (p._id || p.id) ? (
                                 <div className="flex flex-col items-end gap-2 animate-in fade-in slide-in-from-bottom-2">
@@ -579,23 +579,23 @@ const AdminCommandCenter = () => {
             {activeTab === 'network' && (
               <div className="space-y-8">
                 <header>
-                   <h1 className="text-4xl font-serif font-bold text-slate-900">Broiler Network</h1>
-                   <p className="text-slate-500 mt-1">Real-time performance monitoring of {orders.length} orders.</p>
+                   <h1 className="text-2xl md:text-4xl font-serif font-bold text-slate-900">Broiler Network</h1>
+                   <p className="text-xs md:text-base text-slate-500 mt-1">Real-time performance monitoring of {orders.length} orders.</p>
                 </header>
-                <div className="bg-white rounded-[3rem] border border-slate-100 shadow-sm overflow-hidden">
-                    <div className="p-10 border-b border-slate-50 flex justify-between items-center bg-slate-50/50">
-                       <div className="relative w-80">
+                <div className="bg-white rounded-[2rem] md:rounded-[3rem] border border-slate-100 shadow-sm overflow-hidden">
+                    <div className="p-6 md:p-10 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-slate-50/50">
+                       <div className="relative w-full md:w-80">
                           <input 
                             type="text" 
                             placeholder="Search network..." 
                             value={globalFilter}
                             onChange={e => setGlobalFilter(e.target.value)}
-                          className="premium-input-luxury pl-12 pr-6 py-4 text-sm"
+                          className="premium-input-luxury pl-12 pr-6 py-4 text-sm w-full"
                           />
                           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
                        </div>
-                       <div className="flex items-center gap-6">
-                          <div className="text-right">
+                       <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end">
+                          <div className="text-left md:text-right">
                              <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Active Orders</div>
                              <div className="text-lg font-black text-primary">{activeOrdersCount}</div>
                           </div>
@@ -610,7 +610,7 @@ const AdminCommandCenter = () => {
                             {table.getHeaderGroups().map(headerGroup => (
                               <tr key={headerGroup.id} className="bg-slate-50/50">
                                  {headerGroup.headers.map(header => (
-                                   <th key={header.id} className="px-10 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-100">
+                                   <th key={header.id} className="px-6 md:px-10 py-4 md:py-6 text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-100">
                                       {flexRender(header.column.columnDef.header, header.getContext())}
                                    </th>
                                  ))}
@@ -621,17 +621,17 @@ const AdminCommandCenter = () => {
                             {table.getRowModel().rows.length > 0 ? table.getRowModel().rows.map(row => (
                               <tr key={row.id} className="border-b border-slate-50 hover:bg-slate-50/80 transition-all duration-300 group">
                                  {row.getVisibleCells().map(cell => (
-                                   <td key={cell.id} className="px-10 py-7 text-sm font-bold text-slate-600 group-hover:text-primary transition-colors">
+                                   <td key={cell.id} className="px-6 md:px-10 py-5 md:py-7 text-xs md:text-sm font-bold text-slate-600 group-hover:text-primary transition-colors">
                                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                    </td>
                                  ))}
                               </tr>
                             )) : (
                               <tr>
-                                 <td colSpan={columns.length} className="py-32 text-center text-slate-300 font-black uppercase tracking-widest">
+                                 <td colSpan={columns.length} className="py-20 md:py-32 text-center text-slate-300 font-black uppercase tracking-widest text-xs">
                                     No records matching filter
                                  </td>
-                              </tr>
+                               </tr>
                             )}
                          </tbody>
                       </table>
